@@ -3,16 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using RapidGames.Data;
 
 #nullable disable
 
-namespace RapidGames.Data.Migrations
+namespace RapidGames.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250526141442_InitialCreateMySql")]
+    partial class InitialCreateMySql
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +39,7 @@ namespace RapidGames.Data.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("RapidGames.Models.CategoryGames", b =>
@@ -58,7 +62,7 @@ namespace RapidGames.Data.Migrations
 
                     b.HasIndex("GameId");
 
-                    b.ToTable("CategoryGames", (string)null);
+                    b.ToTable("CategoryGames");
                 });
 
             modelBuilder.Entity("RapidGames.Models.Game", b =>
@@ -86,7 +90,7 @@ namespace RapidGames.Data.Migrations
 
                     b.HasKey("GameId");
 
-                    b.ToTable("Games", (string)null);
+                    b.ToTable("Games");
                 });
 
             modelBuilder.Entity("RapidGames.Models.Review", b =>
@@ -104,14 +108,13 @@ namespace RapidGames.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ReviewText")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("ReviewId");
 
                     b.HasIndex("GameId");
 
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("Review");
                 });
 
             modelBuilder.Entity("RapidGames.Models.CategoryGames", b =>

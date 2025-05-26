@@ -4,55 +4,33 @@
     ViewData["Title"] = "GameList";
 }
 
-<link rel="stylesheet" href="./css/GameListing.css" asp-append-version="true">
+<link rel="stylesheet" href="~/css/GameListing.css" asp-append-version="true" /> 
 
 <h1 id="title">Game List</h1>
 
-
-<section>
-    <img src="~/img/@Model[0].ImgNumber"></img>
-    <div class="description">
-        <div>@Model[0].Title: @Model[0].ReviewText</div>
-        <div>
-            <span class="rating">@Model[0].Rating</span>
-        </div>
-    </div>
-    <div>
-        <button id="delete">delete</button>
-        <button id="info" onclick="window.location.href='@Url.Action("GameDetail", "GameDetail", new { id = Model[0].GameId })'">
-            Info
-        </button>
-    </div>
-</section>
-
-<section>
-    <img src="~/img/@Model[1].ImgNumber"></img>
-    <div class="description">
-        <div>@Model[1].Title: @Model[1].ReviewText</div>
-        <div>
-            <span class="rating">@Model[1].Rating</span>
-        </div>
-    </div>
-    <div>
-        <button id="delete">delete</button>
-        <button id="info" onclick="window.location.href='@Url.Action("GameDetail", "GameDetail", new { id = Model[1].GameId })'">
-            Info
-        </button>
-    </div>
-</section>
-
-<section>
-    <img src="~/img/@Model[2].ImgNumber"></img>
-    <div class="description">
-        <div>@Model[2].Title: @Model[2].ReviewText</div>
-        <div>
-            <span class="rating">@Model[2].Rating</span>
-        </div>
-    </div>
-    <div>
-        <button id="delete">delete</button>
-        <button id="info" onclick="window.location.href='@Url.Action("GameDetail", "GameDetail", new { id = Model[2].GameId })'">
-            Info
-        </button>
-    </div>
-</section>
+@if (Model != null && Model.Any())
+{
+    foreach (var game in Model) 
+    {
+        <section>
+            <img src="~/img/@game.ImgNumber" alt="@game.Title" />
+            <div class="description">
+                <div>@game.Title: @game.ReviewText</div>
+                <div>
+                    <span class="rating">@game.Rating</span>
+                </div>
+            </div>
+            <div>
+                <button id="delete" data-gameid="@game.GameId">Delete</button>
+                <button id="info" onclick="window.location.href='@Url.Action("GameDetail", "GameDetail", new { id = game.GameId })'">
+                    Info
+                </button>
+            </div>
+        </section>
+        <hr />
+    }
+}
+else
+{
+    <p>No games are currently available in the list. Try adding some via the database!</p>
+}
