@@ -1,19 +1,35 @@
-﻿<!DOCTYPE html>
+﻿@model dynamic
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>GameDetails</title>
-    <link href="~/css/GameDetail.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/GameDetail.css" asp-append-version="true" />
 </head>
 <body>
     <div id="container">
     <h1 id="title1">Game Details</h1>
     
         <div class="parent">
-            <div class="div1">1</div>
-            <div class="div2">2</div>
-            <div class="div3">3</div>
-            <div class="div4">4</div>
+            <div class="div1"><img src="~/img/@Model.ImgNumber" alt="@Model.Title" width="100" height="100"/></div>
+            <div class="div2">@Model.ReviewText</div>
+            <div class="div3">@Model.Rating / 5</div>
+            <div class="div4">
+                @if (Model.GameCategories != null && ((List<RapidGames.Models.Category>)Model.GameCategories).Any())
+                {
+                    <ul>
+                        @foreach (var category in (List<RapidGames.Models.Category>)Model.GameCategories)
+                        {
+                            <li>@category.CategoryName</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>This game has no categories listed.</p>
+                }
+            </div>
         </div>
     
     <div id="btn">
@@ -23,3 +39,4 @@
     </div>
 </body>
 </html>
+
