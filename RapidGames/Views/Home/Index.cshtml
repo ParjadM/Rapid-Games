@@ -1,0 +1,58 @@
+﻿@model List<dynamic>
+
+@{
+    ViewData["Title"] = "GameList";
+}
+
+<link rel="stylesheet" href="./css/GameListing.css" asp-append-version="true">
+
+<h1 id="title">Game List</h1>
+
+
+<section>
+    <img src="~/img/@Model[0].ImgNumber"></img>
+    <div class="description">
+        <div>@Model[0].Title: @Model[0].ReviewText</div>
+        <div>
+            <span class="rating">@Model[0].Rating</span>
+        </div>
+    </div>
+    <div>
+        <button id="delete">delete</button>
+        <button id="info" onclick="window.location.href='@Url.Action("GameDetail", "GameDetail", new { id = Model[0].GameId })'">
+            Info
+        </button>
+    </div>
+</section>
+
+<section>
+    <img src="~/img/@Model[1].ImgNumber"></img>
+    <div class="description">
+        <div>@Model[1].Title: @Model[1].ReviewText</div>
+        <div>
+            <span class="rating">@Model[1].Rating</span>
+        </div>
+    </div>
+    <div>
+        <button id="delete">delete</button>
+        <button id="info" onclick="window.location.href='@Url.Action("GameDetail", "GameDetail", new { id = Model[1].GameId })'">
+            Info
+        </button>
+    </div>
+</section>
+
+<section>
+    <img src="~/img/@Model[2].ImgNumber"></img>
+    <div class="description">
+        <div>@Model[2].Title: @Model[2].ReviewText</div>
+        <div>
+            <span class="rating">@Model[2].Rating</span>
+        </div>
+    </div>
+    <div>
+        <button id="delete">delete</button>
+        <button id="info" onclick="window.location.href='@Url.Action("GameDetail", "GameDetail", new { id = Model[2].GameId })'">
+            Info
+        </button>
+    </div>
+</section>

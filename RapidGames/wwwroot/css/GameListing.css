@@ -1,0 +1,58 @@
+﻿body {
+    background-color: #EAEBD0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+section {
+    width: 750px;
+    background-color: #DA6C6C;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border: dashed 2px #CD5656;
+    margin: 20px auto;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+}
+.rating {
+    font-size: 30px;
+    color: gold;
+}
+.description {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+#info {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#delete {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#title {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
