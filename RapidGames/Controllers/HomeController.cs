@@ -32,7 +32,7 @@ namespace RapidGames.Controllers
             {
                 if (_context != null && _context.Games != null)
                 {
-                    games = _context.Games.ToList(); // Fetch all games
+                    games = _context.Games.ToList();
                 }
                 else
                 {
@@ -41,7 +41,7 @@ namespace RapidGames.Controllers
 
                 if (_context != null && _context.Review != null)
                 {
-                    reviews = _context.Review.ToList(); // Fetch all reviews
+                    reviews = _context.Review.ToList(); 
                 }
                 else
                 {
